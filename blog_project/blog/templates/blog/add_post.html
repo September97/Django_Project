@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Post - The Daily Blog Tribune</title>
+</head>
+<body>
+    <header>
+        <h1>📰 The Daily Blog Tribune</h1>
+        <p><em>Submit Your Story</em></p>
+    </header>
+    
+    <nav>
+        <p>
+            <a href="{% url 'post_list' %}">Home</a> | 
+            <a href="{% url 'add_post' %}">Add New Post</a> | 
+            <a href="/admin/">Admin Panel</a>
+        </p>
+    </nav>
+    
+    <hr>
+    
+    <main>
+        <h2>Create a New Blog Post</h2>
+        <p>Fill out the form below to publish your article on The Daily Blog Tribune.</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <table>
+                <tr>
+                    <td><label for="title"><strong>Post Title:</strong></label></td>
+                    <td><input type="text" id="title" name="title" size="60" required></td>
+                </tr>
+                <tr>
+                    <td><label for="author"><strong>Author Name:</strong></label></td>
+                    <td><input type="text" id="author" name="author" size="60" required></td>
+                </tr>
+                <tr>
+                    <td valign="top"><label for="content"><strong>Content:</strong></label></td>
+                    <td><textarea id="content" name="content" rows="15" cols="60" required></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Publish Post</button>
+                        <a href="{% url 'post_list' %}"><button type="button">Cancel</button></a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+    
+    <hr>
+    
+    <aside>
+        <h3>Writing Guidelines</h3>
+        <ul>
+            <li>Keep your title clear and concise</li>
+            <li>Write in a professional tone</li>
+            <li>Check for spelling and grammar</li>
+            <li>Make your content engaging</li>
+        </ul>
+        
+        <h3>Need Help?</h3>
+        <p>If you encounter any issues, please contact the administrator.</p>
+    </aside>
+    
+    <hr>
+    
+    <footer>
+        <p><small>&copy; 2025 The Daily Blog Tribune. All rights reserved.</small></p>
+        <p><a href="{% url 'post_list' %}">Back to Home</a></p>
+    </footer>
+</body>
+</html>
